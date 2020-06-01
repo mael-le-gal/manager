@@ -141,14 +141,21 @@
                             </div>
                         </oui-select-picker-section>
                         <oui-select-picker-section
-                            data-ng-if="$ctrl.region && !$ctrl.region.hasEnoughQuotaForFlavor(flavor)"
+                            data-ng-if="$ctrl.region && $ctrl.region.hasEnoughQuotaForFlavor(flavor)"
                         >
-                            <a
-                                class="oui-button oui-button_link"
-                                data-ui-sref="pci.projects.project.quota"
-                                data-translate="pci_project_flavors_quota"
-                            >
-                            </a>
+                            <div class="text-small">
+                                <span
+                                    class="oui-icon oui-icon-error oui-color-error-dark text-small"
+                                    aria-hidden="true"
+                                ></span>
+                                <span
+                                    class="oui-color-error-dark"
+                                    data-translate="pci_project_flavors_quota_info">
+                                </span>
+                                <a class="oui-link" data-ng-href="{{ ::$ctrl.quotaUrl }}">
+                                    <span data-translate="pci_project_flavors_quota_manage"></span>
+                                </a>
+                            </div>
                         </oui-select-picker-section>
                         <oui-select-picker-section
                             data-ng-if="!$ctrl.hasEnoughDisk(flavor)"

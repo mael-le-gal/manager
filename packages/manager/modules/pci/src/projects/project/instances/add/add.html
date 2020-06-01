@@ -113,16 +113,23 @@
                                                 data-translate="pci_project_instances_instance_add_region_activate"
                                             ></span>
                                         </a>
-                                        <a
-                                            class="oui-button oui-button_link"
+                                        <div
                                             data-ng-switch-default
-                                            data-ui-sref="pci.projects.project.quota"
+                                            class="text-small"
                                         >
                                             <span
-                                                data-translate="pci_project_instances_instance_add_region_quota"
-                                            >
+                                                class="oui-icon oui-icon-error oui-color-error-dark text-small"
+                                                aria-hidden="true"
+                                            ></span>
+                                            <span
+                                                class="oui-color-error-dark"
+                                                data-translate="pci_project_instances_instance_add_region_quota_info">
+
                                             </span>
-                                        </a>
+                                            <a class="oui-link" data-ng-href="{{ ::$ctrl.quotaLink }}">
+                                                <span data-translate="pci_project_instances_instance_add_region_quota_manage"></span>
+                                            </a>
+                                        </div>
                                     </oui-select-picker-section>
                                 </oui-select-picker>
                             </div>
