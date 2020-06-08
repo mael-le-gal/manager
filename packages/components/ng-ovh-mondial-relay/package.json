@@ -23,7 +23,7 @@
   "author": "OVH SAS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "browser": "./dist/umd/ng-ovh-mondial-relay.js",
+  "browser": "./dist/umd/ng-ovh-mondsial-relay.js",
   "files": [
     "dist"
   ],
@@ -44,7 +44,7 @@
     "bootstrap": "~3.4.1",
     "lodash": "^4.17.15",
     "ovh-ui-kit": "^2.42.8",
-    "ovh-ui-kit-bs": "^2.4.6"
+    "ovh-ui-kit-bs": "^4.1.4"
   },
   "devDependencies": {
     "@ovh-ux/component-rollup-config": "^7.0.0"
