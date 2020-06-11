@@ -4,6 +4,8 @@ import indexOf from 'lodash/indexOf';
 import map from 'lodash/map';
 import uniq from 'lodash/uniq';
 
+const MAX_SERVICES_TO_DISPLAY = 200;
+
 angular
   .module('managerApp')
   .controller(
@@ -35,6 +37,10 @@ angular
       self.search = '';
       self.groupList = [];
       self.selectedService = null;
+
+      self.filteredList = [];
+      self.filteredListCount = 0;
+      self.filteredListMaxSize = MAX_SERVICES_TO_DISPLAY;
 
       self.getServiceType = function getServiceType(service) {
         if (service.serviceType === 'alias') {
@@ -92,9 +98,12 @@ angular
       self.$onInit = () => {
         self.loading.init = true;
 
-        $scope.$watch('$ctrl.search', () => {
-          // reset selected service
-          self.selectedService = null;
+        $scope.$watch('$ctrl.search', (newSearch, oldSearch) => {
+          if (oldSearch !== newSearch) {
+            // reset selected service
+            self.selectedService = null;
+            self.refreshFilteredList(newSearch);
+          }
         });
 
         return $q
@@ -110,10 +119,47 @@ angular
               ),
               (id) => find(TelephonyMediator.groups, { billingAccount: id }),
             );
+            self.refreshFilteredList();
           })
           .finally(() => {
             self.loading.init = false;
           });
+      };
+
+      self.refreshFilteredList = (search) => {
+        self.filteredList = [];
+        self.filteredListCount = 0;
+
+        self.groupList.forEach((group) => {
+          const filteredServices = [];
+          group.getAllServices().forEach((service) => {
+            if (self.excludeFilter(service) && self.availableFilter(service)) {
+              let found = search
+                ? service.serviceName
+                    .toString()
+                    .toLowerCase()
+                    .indexOf(search) >= 0
+                : true;
+              if (!found && service.description) {
+                found =
+                  service.description
+                    .toString()
+                    .toLowerCase()
+                    .indexOf(search) >= 0;
+              }
+              if (found) {
+                filteredServices.push(service);
+                self.filteredListCount += 1;
+              }
+            }
+          });
+          if (filteredServices.length) {
+            self.filteredList.push({
+              group,
+              filteredServices,
+            });
+          }
+        });
       };
     },
   );

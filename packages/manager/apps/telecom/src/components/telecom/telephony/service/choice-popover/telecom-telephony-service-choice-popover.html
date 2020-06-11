@@ -38,19 +38,27 @@
                     </div>
 
                     <!-- SEARCH RESULTS -->
+                    <p
+                        data-ng-if="$ctrl.filteredListCount > $ctrl.filteredListMaxSize"
+                        data-translate="telephony_service_choice_too_many"
+                        data-translate-values="{
+                           count: $ctrl.filteredListCount,
+                       }"
+                    ></p>
                     <div
                         class="section-group"
-                        data-ng-repeat="group in $ctrl.groupList track by $index"
+                        data-ng-if="$ctrl.filteredListCount <= $ctrl.filteredListMaxSize"
+                        data-ng-repeat="item in $ctrl.filteredList track by $index"
                     >
                         <div
-                            data-ng-repeat="service in group.getAllServices() | filter:$ctrl.excludeFilter | filter:$ctrl.availableFilter | tucPropsFilter: { serviceName: $ctrl.search, description: $ctrl.search } track by $index"
+                            data-ng-repeat="service in item.filteredServices track by $index"
                         >
                             <div
                                 class="group-title text-capitalize"
                                 data-ng-if="$index === 0"
                             >
                                 <span
-                                    data-ng-bind="group.getDisplayedName()"
+                                    data-ng-bind="item.group.getDisplayedName()"
                                 ></span>
                             </div>
                             <div class="section-item">
