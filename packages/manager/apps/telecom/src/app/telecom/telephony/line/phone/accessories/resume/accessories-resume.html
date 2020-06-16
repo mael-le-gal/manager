@@ -29,7 +29,7 @@
                 ></h3>
 
                 <oui-datagrid data-rows="$ctrl.order.details">
-                    <oui-column
+                    <oui-datagrid-column
                         data-title="'telephony_line_phone_accessories_resume_table_description' | translate"
                         data-property="description"
                         data-sortable="asc"
@@ -39,8 +39,8 @@
                             data-ng-attr-title="{{::'telephony_line_phone_accessories_resume_table_description' | translate }}"
                         >
                         </span>
-                    </oui-column>
-                    <oui-column
+                    </oui-datagrid-column>
+                    <oui-datagrid-column
                         data-title="'telephony_line_phone_accessories_resume_table_unit_price' | translate"
                         data-property="unitPrice.value"
                     >
@@ -49,8 +49,8 @@
                             data-ng-attr-title="{{::'telephony_line_phone_accessories_resume_table_unit_price' | translate }}"
                         >
                         </span>
-                    </oui-column>
-                    <oui-column
+                    </oui-datagrid-column>
+                    <oui-datagrid-column
                         data-title="'telephony_line_phone_accessories_resume_table_quantity' | translate"
                         data-property="quantity"
                     >
@@ -59,8 +59,8 @@
                             data-title="{{::'telephony_line_phone_accessories_resume_table_quantity' | translate }}"
                         >
                         </span>
-                    </oui-column>
-                    <oui-column
+                    </oui-datagrid-column>
+                    <oui-datagrid-column
                         data-title="'telephony_line_phone_accessories_resume_table_total' | translate"
                         data-property="totalPrice.value"
                         data-sortable
@@ -71,7 +71,7 @@
                             data-title="{{::'telephony_line_phone_accessories_resume_table_total' | translate }}"
                         >
                         </span>
-                    </oui-column>
+                    </oui-datagrid-column>
                 </oui-datagrid>
 
                 <div class="row">
