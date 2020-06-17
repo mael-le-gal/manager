@@ -3,6 +3,33 @@
     <h2 data-translate="components_notification_loading"></h2>
 </div>
 
+<div data-ng-hide="NotificationListCtrl.loading">
+    <div
+        data-ng-repeat="smsDetail in NotificationListCtrl.smsDetails track by smsDetail.name"
+    >
+        <oui-message
+            type="info"
+            data-ng-if="smsDetail.creditsLeft > 0"
+            dismissable="false"
+        >
+            <span
+                data-translate="components_notification_sms_detail"
+                data-translate-values="{smsAccount: smsDetail.name, creditsLeft: smsDetail.creditsLeft}"
+            ></span>
+        </oui-message>
+        <oui-message
+            type="warning"
+            data-ng-if="smsDetail.creditsLeft === 0"
+            dismissable="false"
+        >
+            <span
+                data-translate="components_notification_sms_detail_warning"
+                data-translate-values="{smsAccount: smsDetail.name}"
+            ></span>
+        </oui-message>
+    </div>
+</div>
+
 <div
     class="table-responsive-vertical"
     data-ng-hide="NotificationListCtrl.loading"
@@ -27,6 +54,14 @@
                         data-title="{{:: 'table_sort' | translate}}"
                     >
                         {{:: 'components_notification_type' | translate }}
+                    </tuc-col-sort>
+                </th>
+                <th scope="col">
+                    <tuc-col-sort
+                        data-field-name="account"
+                        data-title="{{:: 'table_sort' | translate}}"
+                    >
+                        {{:: 'components_notification_account' | translate }}
                     </tuc-col-sort>
                 </th>
                 <th scope="col">
@@ -66,6 +101,14 @@
                     data-title="{{ 'components_notification_type' | translate }}"
                 >
                     {{ 'components_notification_' + element.type | translate }}
+                </td>
+                <!-- Compte -->
+                <td
+                    class="form-group"
+                    data-ng-hide="element.editMode"
+                    data-title="{{ 'components_notification_account' | translate }}"
+                >
+                    <span>{{:: element.smsAccount }}</span>
                 </td>
                 <!-- Contact -->
                 <td
@@ -129,15 +172,16 @@
                             >{{ notifType.label | translate }}</option
                         >
                     </select>
+                </td>
+                <td
+                    data-title="{{ 'components_notification_account' | translate }}"
+                    data-ng-hide="!element.editMode"
+                    class="form-group"
+                >
                     <div data-ng-if="element.type === 'sms' ">
                         <div
                             data-ng-show="NotificationListCtrl.accounts.length > 1"
                         >
-                            <label
-                                class="control-label"
-                                data-translate="components_notification_account"
-                                for="account"
-                            ></label>
                             <select
                                 id="account"
                                 class="form-control"
