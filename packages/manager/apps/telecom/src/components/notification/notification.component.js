@@ -215,7 +215,6 @@ angular.module('managerApp').component('notificationList', {
         .query({})
         .$promise.then((data) => {
           self.accounts = data;
-          // const smsIds = data;
           // get the SMS remaining credits by accounts
           OvhApiSms.Aapi()
             .detail({
@@ -223,7 +222,6 @@ angular.module('managerApp').component('notificationList', {
             })
             .$promise.then((smsDetails) => {
               self.smsDetails = smsDetails;
-              console.log('smsDetails', smsDetails);
             });
         })
         .catch((err) => self.processError(err));
