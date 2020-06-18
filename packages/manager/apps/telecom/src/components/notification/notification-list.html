@@ -3,7 +3,7 @@
     <h2 data-translate="components_notification_loading"></h2>
 </div>
 
-<div data-ng-hide="NotificationListCtrl.loading">
+<div data-ng-if="!NotificationListCtrl.loading">
     <div
         data-ng-repeat="smsDetail in NotificationListCtrl.smsDetails track by smsDetail.name"
     >
@@ -97,7 +97,7 @@
                 <!-- Type -->
                 <td
                     class="form-group"
-                    data-ng-hide="element.editMode"
+                    data-ng-if="!element.editMode"
                     data-title="{{ 'components_notification_type' | translate }}"
                 >
                     {{ 'components_notification_' + element.type | translate }}
@@ -105,7 +105,7 @@
                 <!-- Compte -->
                 <td
                     class="form-group"
-                    data-ng-hide="element.editMode"
+                    data-ng-if="!element.editMode"
                     data-title="{{ 'components_notification_account' | translate }}"
                 >
                     <span>{{:: element.smsAccount }}</span>
@@ -113,7 +113,7 @@
                 <!-- Contact -->
                 <td
                     class="form-group"
-                    data-ng-hide="element.editMode"
+                    data-ng-if="!element.editMode"
                     data-title="{{ 'components_notification_contact' | translate }}"
                 >
                     <span>{{ element.email || element.phone }}</span>
@@ -121,7 +121,7 @@
                 <!-- Frequency -->
                 <td
                     class="form-group"
-                    data-ng-hide="element.editMode"
+                    data-ng-if="!element.editMode"
                     data-title="{{ 'components_notification_frequency' | translate }}"
                 >
                     <span
@@ -132,7 +132,7 @@
                 <!-- Buttons -->
                 <td
                     class="form-group col-mobile-button-big text-center"
-                    data-ng-hide="element.editMode"
+                    data-ng-if="!element.editMode"
                 >
                     <button
                         type="button"
@@ -152,12 +152,12 @@
                 <!-- Type (edit mode)-->
                 <td
                     data-title="{{ 'components_notification_type' | translate }}"
-                    data-ng-hide="!element.editMode"
+                    data-ng-if="element.editMode"
                     class="form-group"
                 >
                     <span
                         data-translate="components_notification_error_noSmsAccount"
-                        data-ng-hide="NotificationListCtrl.isTypeValid(element.type)"
+                        data-ng-if="!NotificationListCtrl.isTypeValid(element.type)"
                         class="red"
                     >
                     </span>
@@ -175,7 +175,7 @@
                 </td>
                 <td
                     data-title="{{ 'components_notification_account' | translate }}"
-                    data-ng-hide="!element.editMode"
+                    data-ng-if="element.editMode"
                     class="form-group"
                 >
                     <div data-ng-if="element.type === 'sms' ">
@@ -199,7 +199,7 @@
                 <!-- Contact (edit mode)-->
                 <td
                     data-title="{{ 'components_notification_contact' | translate }}"
-                    data-ng-hide="!element.editMode"
+                    data-ng-if="element.editMode"
                     class="form-group"
                 >
                     <input
@@ -220,7 +220,7 @@
                 <!-- Frequency (edit mode)-->
                 <td
                     data-title="{{ 'components_notification_frequency' | translate }}"
-                    data-ng-hide="!element.editMode"
+                    data-ng-if="element.editMode"
                     class="form-group"
                 >
                     <select
@@ -238,7 +238,7 @@
                 <!-- Buttons (edit mode)-->
                 <td
                     class="form-group actions col-mobile-button-big text-center"
-                    data-ng-hide="!element.editMode"
+                    data-ng-if="element.editMode"
                 >
                     <button
                         type="submit"
