@@ -221,7 +221,6 @@ angular.module('managerApp').component('notificationList', {
               smsIds: data,
             })
             .$promise.then((smsDetails) => {
-              console.log(smsDetails);
               self.smsDetails = smsDetails;
             });
         })
