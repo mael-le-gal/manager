@@ -294,7 +294,7 @@ export default class PciInstancesAddController {
       };
     }
 
-    return this.PciProjectsProjectInstanceService.save(
+    return this.PciProjectsProjectInstanceService.createGrapgQlInstance(
       this.projectId,
       this.instance,
       this.model.number,

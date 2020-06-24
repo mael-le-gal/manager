@@ -134,7 +134,7 @@ export default class PciInstanceEditController {
 
   renameInstance() {
     this.isLoading = true;
-    return this.PciProjectsProjectInstanceService.update(
+    return this.PciProjectsProjectInstanceService.updateGrapgQlInstance(
       this.projectId,
       this.editInstance,
     )

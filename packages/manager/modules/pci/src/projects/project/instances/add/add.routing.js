@@ -31,15 +31,15 @@ export default /* @ngInject */ ($stateProvider) => {
       privateNetworks: /* @ngInject */ (
         PciProjectsProjectInstanceService,
         projectId,
-      ) => PciProjectsProjectInstanceService.getPrivateNetworks(projectId),
+      ) => PciProjectsProjectInstanceService.getGrapgQlPrivateNetworks(projectId),
 
       publicNetwork: /* @ngInject */ (
         PciProjectsProjectInstanceService,
         projectId,
-      ) => PciProjectsProjectInstanceService.getPublicNetwork(projectId),
+      ) => PciProjectsProjectInstanceService.getGrapgQlPublicNetworks(projectId),
 
       regions: /* @ngInject */ (PciProjectsProjectInstanceService, projectId) =>
-        PciProjectsProjectInstanceService.getAvailablesRegions(projectId),
+        PciProjectsProjectInstanceService.getGrapgQlAvailableRegions(projectId),
 
       cancelLink: /* @ngInject */ ($state, projectId) =>
         $state.href('pci.projects.project.instances', {

@@ -14,7 +14,7 @@ export default /* @ngInject */ ($stateProvider) => {
         PciProjectsProjectInstanceService,
         projectId,
         instanceId,
-      ) => PciProjectsProjectInstanceService.get(projectId, instanceId),
+      ) => PciProjectsProjectInstanceService.getGrapgQlIntance(projectId, instanceId),
       goBack: /* @ngInject */ (goToInstances) => goToInstances,
       breadcrumb: () => null,
     },

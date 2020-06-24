@@ -18,7 +18,8 @@ export default class PciInstanceDeleteController {
       this.projectId,
       this.instance.id,
     )
-      .then(() =>
+      .then(() => {
+        this.instance.status = 'DELETING';
         this.goBack(
           this.$translate.instant(
             'pci_projects_project_instances_instance_delete_success_message',
@@ -26,8 +27,8 @@ export default class PciInstanceDeleteController {
               instance: this.instance.name,
             },
           ),
-        ),
-      )
+        );
+      })
       .catch((err) =>
         this.goBack(
           this.$translate.instant(
