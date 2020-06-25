@@ -12,6 +12,13 @@ export default /* @ngInject */ ($stateProvider) => {
       ) => CarrierSipService.getCarrierSip(billingAccount, serviceName),
       cdrsLink: /* @ngInject */ ($state, billingAccount, serviceName) =>
         $state.href('app.cdrs', { billingAccount, serviceName }),
+      clusterDetails: /* @ngInject */ ($http, billingAccount, serviceName) =>
+        $http
+          .get(
+            `/telephony/${billingAccount}/carrierSip/${serviceName}/clusterDetails`,
+          )
+          .then(({ data }) => data)
+          .catch(() => ({})),
       currentActiveLink: /* @ngInject */ ($transition$, $state) => () =>
         $state.href($state.current.name, $transition$.params()),
       dashboardLink: /* @ngInject */ ($state, billingAccount, serviceName) =>
