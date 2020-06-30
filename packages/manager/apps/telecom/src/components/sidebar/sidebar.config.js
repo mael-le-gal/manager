@@ -28,6 +28,7 @@ angular
   .run(
     /* @ngInject */ (
       $sce,
+      $state,
       $translate,
       $q,
       atInternet,
@@ -87,6 +88,21 @@ angular
         });
       }
 
+      function addBetaSection() {
+        return SidebarMenu.addMenuItem({
+          title: $translate.instant('telecom_sidebar_section_beta_feature'),
+          category: 'beta',
+          icon: 'ovh-font ovh-font-backToV4',
+          isPopover: true,
+          popoverContent: $translate.instant(
+            'telecom_sidebar_section_beta_feature_activate',
+          ),
+          popoverCallback: () => {
+            return window.location.reload();
+          },
+        });
+      }
+
       /* ----------  SERVICES MENU ITEMS  ----------*/
 
       function initSidebarMenuItems(count, featuresAvailabilities, beta) {
@@ -123,6 +139,9 @@ angular
 
         // add sidebar task item
         addTaskSection();
+
+        // add beta feature item
+        addBetaSection();
       }
 
       /* -----  End of SIDEBAR MENU ITEMS  ------*/

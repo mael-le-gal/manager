@@ -116,6 +116,11 @@ export default /* @ngInject */ function($q, $timeout) {
       this.target = options.target || '_blank';
     }
 
+    this.isPopover = options.isPopover;
+    this.popoverId = options.popoverId;
+    this.popoverContent = options.popoverContent;
+    this.popoverCallback = options.popoverCallback;
+
     // sub items
     this.subItems = [];
 
