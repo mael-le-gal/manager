@@ -13782,6 +13782,11 @@ ovh-api-services@^9.46.0:
   dependencies:
     lodash "^4.17.15"
 
+"ovh-api-services@file:../ovh-api-services":
+  version "9.47.0"
+  dependencies:
+    lodash "^4.17.15"
+
 ovh-common-style@^3.2.2, ovh-common-style@ovh-ux/ovh-common-style#^3.2.2:
   version "3.2.2"
   resolved "https://codeload.github.com/ovh-ux/ovh-common-style/tar.gz/cd9f7bea9240b7e2334ae5cd7e74529478b271d4"

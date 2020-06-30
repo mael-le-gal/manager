@@ -159,6 +159,15 @@ export const MENU = [
         title: 'Serving Engine',
         regions: ['EU'],
       },
+      {
+        id: 'training',
+        beta: true,
+        options: {
+          state: 'pci.projects.project.training',
+        },
+        title: 'Training Engine',
+        regions: ['EU'],
+      },
     ],
     regions: ['EU'],
     title: 'Data & Analytics',

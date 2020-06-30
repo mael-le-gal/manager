@@ -1,0 +1,9 @@
+{
+  "pci_projects_project_training_title": "Training Engine",
+  "pci_projects_project_training_parter_name": "$Partner",
+  "pci_projects_project_training_parter_cli_name": "$partner_cli",
+  "pci_projects_project_training_install_title": "Initialisation",
+  "pci_projects_project_training_install_url": "https://console.$partner.com/cli/install",
+  "pci_projects_project_training_jobs_title": "Tâches",
+  "pci_projects_project_training_data_title": "Données"
+}
