@@ -4,6 +4,17 @@
         <title>Sms App</title>
     </head>
     <body data-ng-app="smsApp">
+        <div
+            data-ng-controller="navbar as $ctrl"
+            style="height: 50px; border-bottom: 2px solid black;"
+        >
+            <span>Navbar</span>
+            <oui-button
+                data-variant="primary"
+                data-text="Toggle sidebar"
+                data-on-click="$ctrl.toggleSidebar()"
+            ></oui-button>
+        </div>
         <div data-ui-view></div>
     </body>
 </html>

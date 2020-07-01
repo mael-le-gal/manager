@@ -1,3 +1,14 @@
+<div
+    data-ng-if="$ctrl.user"
+    class="account-sidebar-wrapper"
+    data-ng-class="{
+        'sidebar-expand': $ctrl.expandSidebar,
+    }"
+    data-ng-attr-aria-expanded="{{ $ctrl.isSidebarVisible }}"
+>
+    <ovh-manager-account-sidebar me="$ctrl.user"></ovh-manager-account-sidebar>
+</div>
+
 <oui-page-header
     data-heading="{{ :: 'sms_title' | translate }}"
 ></oui-page-header>

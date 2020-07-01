@@ -9,4 +9,11 @@ import angular from 'angular';
 import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ovhManagerSms from '@ovh-ux/manager-sms';
 
-angular.module('smsApp', [ngOvhApiWrappers, ovhManagerSms]);
+angular.module('smsApp', [ngOvhApiWrappers, ovhManagerSms]).controller(
+  'navbar',
+  /* @ngInject */ function navbarCtrl($rootScope) {
+    this.toggleSidebar = () => {
+      $rootScope.$emit('sidebar::toggle');
+    };
+  },
+);

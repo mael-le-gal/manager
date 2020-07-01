@@ -2,8 +2,10 @@ import { ListLayoutHelper } from '@ovh-ux/manager-ng-layout-helpers';
 
 export default class SmsCtrl extends ListLayoutHelper.ListLayoutCtrl {
   /* @ngInject */
-  constructor($q, $translate, ouiDatagridService) {
+  constructor($http, $q, $rootScope, $translate, ouiDatagridService) {
     super($q, ouiDatagridService);
+    this.$http = $http;
+    this.$rootScope = $rootScope;
     this.$translate = $translate;
   }
 
@@ -12,6 +14,18 @@ export default class SmsCtrl extends ListLayoutHelper.ListLayoutCtrl {
     this.defaultFilterColumn = 'name';
 
     super.$onInit();
+
+    this.$http
+      .get('/me')
+      .then(({ data }) => data)
+      .then((user) => {
+        this.user = user;
+      });
+
+    this.isSidebarVisible = false;
+    this.$rootScope.$on('sidebar::toggle', () => {
+      this.isSidebarVisible = !this.isSidebarVisible;
+    });
 
     this.filtersOptions = {
       status: {

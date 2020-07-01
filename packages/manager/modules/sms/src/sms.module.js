@@ -1,5 +1,6 @@
 import angular from 'angular';
 
+import '@ovh-ux/manager-account-sidebar';
 import '@ovh-ux/manager-core';
 import '@uirouter/angularjs';
 import 'oclazyload';
@@ -7,6 +8,7 @@ import 'ovh-api-services';
 
 import routing from './sms.routing';
 import component from './sms.component';
+import './sms.less';
 
 import 'ovh-ui-kit/dist/oui.css';
 import 'ovh-ui-kit/dist/oui-olt.css';
@@ -20,6 +22,7 @@ angular
     'ui.router',
     'oc.lazyLoad',
     'ovh-api-services',
+    'ovhManagerAccountSidebar',
     'ovhManagerCore',
   ])
   .config(routing)
