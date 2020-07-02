@@ -191,6 +191,9 @@ angular.module('managerApp').constant('LogsConstants', {
       '24H_MAX': '24h-avg-none',
     },
   },
+  RETENTION: {
+    FORTY_FIVE_DAYS: 'P45D',
+  },
   OFFER_STORAGE_MULTIPLIER: 1073741824,
   CHART_SETTINGS: {
     MAX_TICKS_LIMIT: 12,
