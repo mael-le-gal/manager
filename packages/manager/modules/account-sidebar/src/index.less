@@ -1,0 +1,44 @@
+@import 'oui4/dist/less/_tokens';
+@import 'ovh-ui-kit/packages/oui-color/_variables';
+@import 'ovh-ui-kit/packages/oui-typography/_variables';
+@import 'ovh-ui-kit/packages/oui-navbar/_variables';
+@import './variables';
+
+.ovh-account-sidebar-wrapper {
+  position: fixed;
+  top: @oui-navbar-height;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  overflow-x: hidden;
+  transition: padding 0.1s ease-out, opacity 0.2s ease-out;
+  box-shadow: @oui-navbar-menu-box-shadow;
+  opacity: 0;
+  padding-left: @ovh-sidebar-width;
+  pointer-events: none;
+
+  .manager-hub-user-panel {
+    width: 0;
+  }
+
+  .sidebar-show() {
+    width: @ovh-sidebar-width;
+    padding-left: 0;
+    opacity: 1;
+    pointer-events: auto;
+
+    .manager-hub-user-panel {
+      width: @ovh-sidebar-width;
+    }
+  }
+
+  &.sidebar-expand {
+    @media screen and (min-width: (@device-breakpoint-medium - 1px)) {
+      .sidebar-show();
+    }
+  }
+
+  &[aria-expanded='true'] {
+    .sidebar-show();
+  }
+}
