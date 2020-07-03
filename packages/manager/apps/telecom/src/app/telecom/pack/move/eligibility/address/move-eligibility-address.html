@@ -1,19 +1,21 @@
 <form name="addressCollectForm" data-ng-submit="$ctrl.submitAddress()">
     <div class="form-group">
-        <label for="zipCodeElem" data-translate="pack_move_eligibility_zipcode">
-        </label>
-        <input
-            type="text"
-            class="form-control"
-            id="zipCodeElem"
-            name="zipCode"
-            data-translate-attr="{ placeholder: 'pack_move_eligibility_zipcode' }"
-            data-ng-model="$ctrl.address.zipCode"
-            data-ui-validate="'$ctrl.validator.tucIsZipcode($value, [\'metropolitanFrance\'])'"
-            data-ng-change="$ctrl.getCities($ctrl.address.zipCode)"
-            data-ng-disabled="$ctrl.loaders.cities || $ctrl.method !== 'address'"
-            required
-        />
+        <oui-field
+            data-label="{{ :: 'pack_move_eligibility_zipcode' | translate }}"
+        >
+            <input
+                type="text"
+                class="form-control"
+                id="zipCodeElem"
+                name="zipCode"
+                data-translate-attr="{ placeholder: 'pack_move_eligibility_zipcode' }"
+                data-ng-model="$ctrl.address.zipCode"
+                data-ui-validate="'$ctrl.validator.tucIsZipcode($value, [\'metropolitanFrance\'])'"
+                data-ng-change="$ctrl.getCities($ctrl.address.zipCode)"
+                data-ng-disabled="$ctrl.loaders.cities || $ctrl.method !== 'address'"
+                required
+            />
+        </oui-field>
     </div>
     <button
         type="button"

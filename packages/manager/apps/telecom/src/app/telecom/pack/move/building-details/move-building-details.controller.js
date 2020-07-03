@@ -1,5 +1,7 @@
 import has from 'lodash/has';
 
+import { FIBER_PTO } from './move-building-details.constant';
+
 export default class MoveBuildingDetailsCtrl {
   /* @ngInject */
   constructor($scope, $translate, OvhApiConnectivityEligibilitySearch) {
@@ -88,7 +90,7 @@ export default class MoveBuildingDetailsCtrl {
       this.model.pto != null
     ) {
       switch (this.model.pto) {
-        case 'yes':
+        case FIBER_PTO.FIBER_PTO_YES:
           if (
             this.model.ptoReference != null &&
             this.model.ptoReference !== ''
@@ -96,8 +98,8 @@ export default class MoveBuildingDetailsCtrl {
             return true;
           }
           return false;
-        case 'no':
-        case 'yesNotKnown':
+        case FIBER_PTO.FIBER_PTO_NO:
+        case FIBER_PTO.FIBER_PTO_YES_BUT_NOT_KNOWN:
           return true;
         default:
           return false;

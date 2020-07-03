@@ -5,23 +5,21 @@
              'has-error': availabilityForm.phoneNumber.$touched && availabilityForm.phoneNumber.$invalid
          }"
     >
-        <label
-            for="phoneNumber"
-            class="control-label"
-            data-translate="pack_move_eligibility_number"
+        <oui-field
+            data-label="{{ :: 'pack_move_eligibility_number' | translate }}"
         >
-        </label>
-        <input
-            type="text"
-            class="form-control"
-            id="phoneNumber"
-            name="phoneNumber"
-            required
-            data-ng-pattern="$ctrl.phoneNumberRegex"
-            data-translate-attr="{ placeholder : 'pack_move_eligibility_number' }"
-            data-ng-model="$ctrl.checkLine.lineNumber"
-            data-ng-disabled="$ctrl.method !== 'number'"
-        />
+            <input
+                type="text"
+                class="form-control"
+                id="phoneNumber"
+                name="phoneNumber"
+                required
+                data-ng-pattern="$ctrl.phoneNumberRegex"
+                data-translate-attr="{ placeholder : 'pack_move_eligibility_number' }"
+                data-ng-model="$ctrl.checkLine.lineNumber"
+                data-ng-disabled="$ctrl.method !== 'number'"
+            />
+        </oui-field>
         <span
             class="help-block"
             role="alert"
