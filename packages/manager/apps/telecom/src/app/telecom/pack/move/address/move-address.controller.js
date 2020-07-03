@@ -20,13 +20,13 @@ export default class MoveAddressCtrl {
       this.offer.selected.portability &&
       this.offer.selected.portability.eligibility.eligible &&
       this.offer.selected.unbundling !== UNBUNDLING.partial;
-    if (!canKeep) {
-      this.keepLineNumber = false;
-    }
     return canKeep;
   }
 
   next() {
+    if (!this.canKeepLineNumber()) {
+      this.keepLineNumber = false;
+    }
     const form = {
       currentLandline: {
         lineNumber: this.lineNumber,
