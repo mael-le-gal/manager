@@ -1,5 +1,6 @@
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
+import size from 'lodash/size';
 
 angular.module('managerApp').controller(
   'TelecomTelephonyAliasConfigurationRedirectCtrl',
@@ -36,6 +37,8 @@ angular.module('managerApp').controller(
 
       this.billingAccount = this.$stateParams.billingAccount;
       this.serviceName = this.$stateParams.serviceName;
+
+      this.autocompleteRedirection = [];
 
       return this.tucVoipServiceAlias
         .fetchRedirectNumber(
@@ -96,37 +99,35 @@ angular.module('managerApp').controller(
       );
     }
 
-    setNewDestination() {
-      return (service) => {
-        this.loading = true;
-        this.newDestination = service;
-        if (this.canChangeDestination()) {
-          this.destinationUsedAsPresentation = false;
-        }
+    setNewDestination(service) {
+      this.loading = true;
+      this.newDestination = service;
+      if (this.canChangeDestination()) {
+        this.destinationUsedAsPresentation = false;
+      }
 
-        return this.tucVoipServiceLine
-          .getPhone({
-            billingAccount: service.billingAccount,
-            serviceName: service.serviceName,
-          })
-          .then(() => {
-            this.featureTypeToUse = 'redirect';
-          })
-          .catch((error) => {
-            if (error.status === 404) {
-              this.featureTypeToUse = 'ddi';
-            } else {
-              this.TucToast.error(
-                `${this.$translate.instant(
-                  'telephony_alias_config_redirect_get_error',
-                )} ${get(error, 'data.message', error.message)}`,
-              );
-            }
-          })
-          .finally(() => {
-            this.loading = false;
-          });
-      };
+      return this.tucVoipServiceLine
+        .getPhone({
+          billingAccount: service.billingAccount,
+          serviceName: service.serviceName,
+        })
+        .then(() => {
+          this.featureTypeToUse = 'redirect';
+        })
+        .catch((error) => {
+          if (error.status === 404) {
+            this.featureTypeToUse = 'ddi';
+          } else {
+            this.TucToast.error(
+              `${this.$translate.instant(
+                'telephony_alias_config_redirect_get_error',
+              )} ${get(error, 'data.message', error.message)}`,
+            );
+          }
+        })
+        .finally(() => {
+          this.loading = false;
+        });
     }
 
     canDestinationBeUsedForPresentation() {
@@ -239,6 +240,30 @@ angular.module('managerApp').controller(
         .finally(() => {
           this.loading = false;
         });
+    }
+
+    onRedirectionSearchChanged(value) {
+      if (size(value) >= 5) {
+        this.OvhApiTelephony.v6()
+          .searchService({
+            axiom: value,
+          })
+          .$promise.then((found) => {
+            this.autocompleteRedirection = found;
+          })
+          .catch(() => []);
+      }
+    }
+
+    onRedirectionSearchSelected({ billingAccount, domain }) {
+      this.setNewDestination({
+        billingAccount,
+        serviceName: domain,
+      });
+    }
+
+    onRedirectionSearchReset() {
+      this.newDestination = null;
     }
   },
 );

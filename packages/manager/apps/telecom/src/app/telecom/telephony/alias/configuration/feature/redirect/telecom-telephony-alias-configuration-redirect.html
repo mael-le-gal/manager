@@ -15,9 +15,23 @@
         ></dd>
         <dd
             data-ng-if="$ctrl.newDestination"
-            data-ng-bind="$ctrl.newDestination.description"
+            data-ng-bind="$ctrl.newDestination.serviceName"
         ></dd>
     </dl>
+    <oui-search
+        model="$ctrl.redirection"
+        autocomplete="$ctrl.autocompleteRedirection"
+        autocomplete-property="domain"
+        placeholder="Search for lines"
+        on-change="$ctrl.onRedirectionSearchChanged(modelValue)"
+        autocomplete-on-select="$ctrl.onRedirectionSearchSelected(value)"
+        on-reset="PortabilityOrderCtrl.onRedirectionSearchReset()"
+    >
+        <span
+            data-translate="telephony_alias_portability_order_redirect_line_choose"
+        ></span>
+    </oui-search>
+    <!--
     <button
         class="oui-button oui-button_secondary oui-button_icon-left"
         data-voip-service-choice-popover="{
@@ -35,6 +49,7 @@
             data-translate="{{ $ctrl.newDestination ? 'telephony_alias_config_redirect_change_line' : 'telephony_alias_config_redirect_select_line' }}"
         ></span>
     </button>
+        -->
     <small
         class="d-block my-2"
         data-translate="telephony_alias_config_redirect_alert_forbidden_surcharged_number"
