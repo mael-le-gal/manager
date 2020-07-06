@@ -3,9 +3,9 @@
 </div>
 <div data-ng-if="!loadingServerInformations && !loadingServerError">
     <header class="oui-header" role="banner">
-        <div class="d-flex ml-5 pt-4">
+        <div class="d-flex">
             <h1
-                class="word-break mb-0 oui-header-2"
+                class="word-break oui-heading_2"
                 data-ng-bind="server.displayName"
             ></h1>
             <button
@@ -16,13 +16,12 @@
                 data-ui-sref="app.dedicated.server.dashboard.edit-display-name"
             >
                 <span
-                    class="oui-icon oui-icon_small oui-icon-pen_concept"
+                    class="oui-icon oui-icon-pen_concept"
                     aria-hidden="true"
                 ></span>
             </button>
         </div>
         <p
-            class="ml-5"
             data-ng-bind="server.reverse || ('server_configuration_reverse_not_configured' | translate)"
         ></p>
 
