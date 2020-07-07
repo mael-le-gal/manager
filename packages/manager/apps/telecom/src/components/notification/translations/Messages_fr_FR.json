@@ -15,5 +15,5 @@
   "components_notification_5m": "Toutes les 5 minutes",
   "components_notification_1h": "Toutes les heures",
   "components_notification_6h": "Toutes les 6 heures",
-  "components_notification_sms_detail_warning": "Attention, le compte {{smsAccount}} est à 0."
+  "components_notification_sms_detail_warning": "Attention, le compte {{smsAccount}} n'a plus de crédit pour l'envoi de nouveaux SMS."
 }

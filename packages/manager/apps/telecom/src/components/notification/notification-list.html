@@ -3,21 +3,20 @@
     <h2 data-translate="components_notification_loading"></h2>
 </div>
 
-<div data-ng-if="!NotificationListCtrl.loading">
-    <div
-        data-ng-repeat="smsDetail in NotificationListCtrl.smsDetails track by smsDetail.name"
+<div
+    data-ng-if="!NotificationListCtrl.loading"
+    data-ng-repeat="smsDetail in NotificationListCtrl.smsDetails track by smsDetail.name"
+>
+    <oui-message
+        type="warning"
+        data-ng-if="smsDetail.creditsLeft === 0"
+        dismissable="false"
     >
-        <oui-message
-            type="warning"
-            data-ng-if="smsDetail.creditsLeft === 0"
-            dismissable="false"
-        >
-            <span
-                data-translate="components_notification_sms_detail_warning"
-                data-translate-values="{smsAccount: smsDetail.name}"
-            ></span>
-        </oui-message>
-    </div>
+        <span
+            data-translate="components_notification_sms_detail_warning"
+            data-translate-values="{smsAccount: smsDetail.name}"
+        ></span>
+    </oui-message>
 </div>
 
 <div
@@ -43,7 +42,9 @@
                         data-field-name="type"
                         data-title="{{:: 'table_sort' | translate}}"
                     >
-                        {{:: 'components_notification_type' | translate }}
+                        <span
+                            data-ng-bind=":: 'components_notification_type' | translate"
+                        ></span>
                     </tuc-col-sort>
                 </th>
                 <th scope="col">
@@ -51,7 +52,9 @@
                         data-field-name="account"
                         data-title="{{:: 'table_sort' | translate}}"
                     >
-                        {{:: 'components_notification_account' | translate }}
+                        <span
+                            data-ng-bind=":: 'components_notification_account' | translate"
+                        ></span>
                     </tuc-col-sort>
                 </th>
                 <th scope="col">
@@ -59,7 +62,9 @@
                         data-field-name="contact"
                         data-title="{{:: 'table_sort' | translate}}"
                     >
-                        {{:: 'components_notification_contact' | translate }}
+                        <span
+                            data-ng-bind=":: 'components_notification_contact' | translate"
+                        ></span>
                     </tuc-col-sort>
                 </th>
                 <th scope="col">
@@ -67,7 +72,9 @@
                         data-field-name="frequency"
                         data-title="{{:: 'table_sort' | translate}}"
                     >
-                        {{:: 'components_notification_frequency' | translate }}
+                        <span
+                            data-ng-bind=":: 'components_notification_frequency' | translate"
+                        ></span>
                     </tuc-col-sort>
                 </th>
                 <th scope="col"></th>
@@ -90,7 +97,9 @@
                     data-ng-if="!element.editMode"
                     data-title="{{ 'components_notification_type' | translate }}"
                 >
-                    {{ 'components_notification_' + element.type | translate }}
+                    <span
+                        data-ng-bind="'components_notification_' + element.type | translate"
+                    ></span>
                 </td>
                 <!-- Compte -->
                 <td
@@ -98,7 +107,7 @@
                     data-ng-if="!element.editMode"
                     data-title="{{ 'components_notification_account' | translate }}"
                 >
-                    <span>{{:: element.smsAccount }}</span>
+                    <span data-ng-bind=":: element.smsAccount"></span>
                 </td>
                 <!-- Contact -->
                 <td
@@ -106,7 +115,7 @@
                     data-ng-if="!element.editMode"
                     data-title="{{ 'components_notification_contact' | translate }}"
                 >
-                    <span>{{ element.email || element.phone }}</span>
+                    <span data-ng-bind="element.email || element.phone"></span>
                 </td>
                 <!-- Frequency -->
                 <td
@@ -115,9 +124,9 @@
                     data-title="{{ 'components_notification_frequency' | translate }}"
                 >
                     <span
-                        >{{ 'components_notification_' + element.frequency |
-                        translate}}</span
-                    >
+                        data-ng-bind="'components_notification_' + element.frequency |
+                        translate"
+                    ></span>
                 </td>
                 <!-- Buttons -->
                 <td
