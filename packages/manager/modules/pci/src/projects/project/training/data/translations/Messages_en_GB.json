@@ -1,0 +1,31 @@
+{
+  "pci_projects_project_training_data_id": "ID",
+  "pci_projects_project_training_data_name": "Name",
+  "pci_projects_project_training_data_region": "Region",
+  "pci_projects_project_training_data_container": "Container",
+  "pci_projects_project_training_data_created": "Creation",
+  "pci_projects_project_training_data_user": "User",
+  "pci_projects_project_training_data_pull_status": "Last import",
+  "pci_projects_project_training_data_push_status": "Last export",
+  "pci_projects_project_training_data_status_done": "Done",
+  "pci_projects_project_training_data_status_running": "Attaching",
+  "pci_projects_project_training_data_status_error": "Error",
+  "pci_projects_project_training_data_status_": "Not synchronized",
+  "pci_projects_project_training_data_sync": "Synchronize",
+  "pci_projects_project_training_data_sync_title": "Synchronize my data volume",
+  "pci_projects_project_training_data_list_submit_success": "New data volume mounted with success",
+
+  "pci_projects_project_training_data_list_message_1": "Store your data in Object Storage containers.",
+  "pci_projects_project_training_data_list_message_2": "To access this list of data, run the following command :",
+  "pci_projects_project_training_data_list_add": "Attach an object storage container",
+
+  "pci_projects_project_training_data_add_select_region": "Choose the region of your object storage container",
+  "pci_projects_project_training_data_add_select_obj_container": "Choose your object storage container",
+  "pci_projects_project_training_data_add_select_obj_container_tips": "Choose your object storage container to synchronize with the data volume.",
+  "pci_projects_project_training_data_add_select_user": "Choose a user",
+  "pci_projects_project_training_data_add_select_user_tips": "Choose the user owner of the data volume",
+  "pci_projects_project_training_data_add_select_name": "Choose a name for the data volume",
+  "pci_projects_project_training_data_add_select_name_tips": "The data volume name should be in lowercase",
+  "pci_projects_project_training_data_add_sync_tips": "Import data from object storage now",
+  "pci_projects_project_training_data_validation_equivalent_command": "Equivalent command"
+}
